@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://main_scene"]
+
+[ext_resource type="Script" path="res://main.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://car_soft_scene" path="res://car_soft.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://obstacle_scene" path="res://obstacle.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://ground_scene" path="res://ground.tscn" id="4"]
+[ext_resource type="Script" path="res://camera_controller.gd" id="5"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1")
+car_scene = ExtResource("2")
+obstacle_scene = ExtResource("3")
+
+[node name="Ground" parent="." instance=ExtResource("4")]
+
+[node name="CameraController" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8, 8)
+script = ExtResource("5")
+fov = 75.0
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, -0.75, 0.433013, 0, 10, 0)
+light_energy = 1.0
+shadow_enabled = true
+
+[node name="AmbientLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+light_energy = 0.3
