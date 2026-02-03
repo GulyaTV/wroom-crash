@@ -102,7 +102,7 @@ func update_display():
 	
 	# Столкновения
 	if collisions_label:
-		if car.has_method("get") and car.get("total_collisions") != null:
+		if "total_collisions" in car:
 			collisions = car.total_collisions
 		collisions_label.text = "Столкновений: %d" % collisions
 
