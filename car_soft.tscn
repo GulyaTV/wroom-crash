@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://car_soft_scene"]
+[gd_scene load_steps=6 format=3 uid="uid://car_soft_scene"]
 
 [ext_resource type="Script" path="res://soft_body_car.gd" id="1"]
 
@@ -13,12 +13,22 @@ albedo_color = Color(0.2, 0.6, 1, 1)
 metallic = 0.8
 roughness = 0.2
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_wheel"]
+top_radius = 0.4
+bottom_radius = 0.4
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wheel"]
+albedo_color = Color(0.1, 0.1, 0.1, 1)
+metallic = 0.5
+roughness = 0.8
+
 [node name="CarSoft" type="RigidBody3D"]
 script = ExtResource("1")
 mass = 1200.0
 gravity_scale = 1.0
 contact_monitor = true
-max_contacts_reported = 10
+max_contacts_reported = 20
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_car")
@@ -28,17 +38,21 @@ surface_material_override/0 = SubResource("StandardMaterial3D_car")
 shape = SubResource("BoxShape3D_car")
 
 [node name="FrontLeftWheel" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, -0.5, 1.5)
-mesh = SubResource("BoxMesh_car")
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -0.8, -0.5, 1.5)
+mesh = SubResource("CylinderMesh_wheel")
+surface_material_override/0 = SubResource("StandardMaterial3D_wheel")
 
 [node name="FrontRightWheel" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, -0.5, 1.5)
-mesh = SubResource("BoxMesh_car")
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.8, -0.5, 1.5)
+mesh = SubResource("CylinderMesh_wheel")
+surface_material_override/0 = SubResource("StandardMaterial3D_wheel")
 
 [node name="RearLeftWheel" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, -0.5, -1.5)
-mesh = SubResource("BoxMesh_car")
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -0.8, -0.5, -1.5)
+mesh = SubResource("CylinderMesh_wheel")
+surface_material_override/0 = SubResource("StandardMaterial3D_wheel")
 
 [node name="RearRightWheel" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, -0.5, -1.5)
-mesh = SubResource("BoxMesh_car")
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.8, -0.5, -1.5)
+mesh = SubResource("CylinderMesh_wheel")
+surface_material_override/0 = SubResource("StandardMaterial3D_wheel")
