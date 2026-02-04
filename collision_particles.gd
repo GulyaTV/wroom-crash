@@ -3,7 +3,6 @@ extends GPUParticles3D
 ## Система частиц для эффектов столкновений
 
 @export var auto_cleanup: bool = true
-@export var lifetime: float = 2.0
 
 func _ready():
 	# Настройка частиц

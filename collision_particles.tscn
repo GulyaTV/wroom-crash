@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://collision_particles"]
+
+[ext_resource type="Script" path="res://collision_particles.gd" id="1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_particles"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial"]
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, -9.8, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+orbit_velocity = 0.0
+scale_min = 0.1
+scale_max = 0.3
+
+[node name="CollisionParticles" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1")
+amount = 50
+lifetime = 2.0
+one_shot = true
+emitting = false
+process_material = SubResource("ParticleProcessMaterial")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_particles")
