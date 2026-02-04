@@ -1,43 +1,43 @@
-[gd_scene load_steps=7 format=3 uid="uid://main_scene"]
+[gd_scene format=3 uid="uid://c0kc83tbcwgqr"]
 
-[ext_resource type="Script" path="res://main.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://car_soft_scene" path="res://car_soft.tscn" id="2"]
-[ext_resource type="PackedScene" uid="uid://obstacle_scene" path="res://obstacle.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://ground_scene" path="res://ground.tscn" id="4"]
-[ext_resource type="Script" path="res://camera_controller.gd" id="5"]
-[ext_resource type="Script" path="res://ui_hud.gd" id="6"]
+[ext_resource type="Script" uid="uid://jxd8fj1swshn" path="res://main.gd" id="1"]
+[ext_resource type="PackedScene" path="res://car_soft.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://obstacle.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://ground.tscn" id="4"]
+[ext_resource type="Script" uid="uid://dbes5c1u6qu5b" path="res://camera_controller.gd" id="5"]
+[ext_resource type="Script" uid="uid://d2lab5vr5xqtw" path="res://ui_hud.gd" id="6"]
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" unique_id=964227823]
 script = ExtResource("1")
 car_scene = ExtResource("2")
 obstacle_scene = ExtResource("3")
-obstacle_count = 30
-spawn_area_size = 50.0
 
-[node name="Ground" parent="." instance=ExtResource("4")]
+[node name="Ground" parent="." unique_id=843771793 instance=ExtResource("4")]
 
-[node name="CameraController" type="Camera3D" parent="."]
+[node name="CameraController" type="Camera3D" parent="." unique_id=348168840]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8, 8)
-script = ExtResource("5")
-fov = 75.0
 current = true
+script = ExtResource("5")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=385368891]
 transform = Transform3D(0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, -0.75, 0.433013, 0, 10, 0)
 light_energy = 1.2
 shadow_enabled = true
 
-[node name="AmbientLight" type="OmniLight3D" parent="."]
+[node name="AmbientLight" type="OmniLight3D" parent="." unique_id=1969007416]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 light_energy = 0.4
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="." unique_id=524777633]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
-[node name="HUD" type="Control" parent="UI"]
+[node name="HUD" type="Control" parent="UI" unique_id=84676161]
 layout_mode = 1
+anchors_preset = 0
 script = ExtResource("6")
